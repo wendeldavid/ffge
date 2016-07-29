@@ -1,0 +1,185 @@
+{
+  "dias": 0,
+  "recorde": 11,
+  "grosserias": [
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 7,
+          "day": 14
+        },
+        "time": {
+          "hour": 0,
+          "minute": 0,
+          "second": 0,
+          "nano": 0
+        }
+      },
+      "acao": "escroto",
+      "vitima": "Thomas"
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 7,
+          "day": 25
+        },
+        "time": {
+          "hour": 14,
+          "minute": 17,
+          "second": 5,
+          "nano": 182000000
+        }
+      },
+      "acao": "Grosseiro e Escroto",
+      "vitima": "Sid",
+      "descricao": "falando que o Denner se veste igual a ele no estilo \"Sid Life Style \u003d mulambo sujo\". Uma grosseria e escrotice dupla da parte dele."
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 7,
+          "day": 25
+        },
+        "time": {
+          "hour": 15,
+          "minute": 11,
+          "second": 16,
+          "nano": 357000000
+        }
+      },
+      "acao": "Escroto",
+      "vitima": "Denner",
+      "descricao": "Falando que o Denner se veste no estilo Sid Life Style. É uma dupla escrotisse, pois o Denner não estava presente no momento (escrotisse pelas costas 2x)"
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 7,
+          "day": 29
+        },
+        "time": {
+          "hour": 12,
+          "minute": 36,
+          "second": 21,
+          "nano": 361000000
+        }
+      },
+      "acao": "Grosseiro e Escroto",
+      "vitima": "Uma menina da Sythex",
+      "descricao": "Afirmou que a menina faz serviço de presidiário que os caras são loucos incluindo ela. Porém em suas falas ele usou palavras de baixo calão que tenho vergonha de incluir aqui nessa descrição."
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 7,
+          "day": 29
+        },
+        "time": {
+          "hour": 12,
+          "minute": 37,
+          "second": 47,
+          "nano": 925000000
+        }
+      },
+      "acao": "Escroto",
+      "vitima": "Jordan",
+      "descricao": "Comparou o Jordan com um cosplay de indiano genérico qualquer que faz comedia em seriados."
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 7,
+          "day": 29
+        },
+        "time": {
+          "hour": 12,
+          "minute": 40,
+          "second": 55,
+          "nano": 276000000
+        }
+      },
+      "acao": "Grosseiro e Escroto",
+      "vitima": "Cuca Manager",
+      "descricao": "Não quis patrocinar a cuca por conseguir bater o seu próprio recorde de 8 dias."
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 7,
+          "day": 29
+        },
+        "time": {
+          "hour": 12,
+          "minute": 42,
+          "second": 7,
+          "nano": 621000000
+        }
+      },
+      "acao": "Grosseiro",
+      "vitima": "Wallace",
+      "descricao": "Ficou ofendido com o xingamento do Sid"
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 7,
+          "day": 29
+        },
+        "time": {
+          "hour": 12,
+          "minute": 42,
+          "second": 38,
+          "nano": 589000000
+        }
+      },
+      "acao": "Grosseiro",
+      "vitima": "Sid",
+      "descricao": "Me mandou tomar no c*"
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 7,
+          "day": 29
+        },
+        "time": {
+          "hour": 12,
+          "minute": 42,
+          "second": 57,
+          "nano": 293000000
+        }
+      },
+      "acao": "Escroto",
+      "vitima": "Parode",
+      "descricao": "Chamou o Parode de burro por tabela"
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 7,
+          "day": 29
+        },
+        "time": {
+          "hour": 13,
+          "minute": 20,
+          "second": 1,
+          "nano": 593000000
+        }
+      },
+      "acao": "Grosseiro",
+      "vitima": "teste",
+      "descricao": "teste"
+    }
+  ]
+}
