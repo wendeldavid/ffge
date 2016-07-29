@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta
+	http-equiv="X-UA-Compatible"
+	content="IE=edge">
+<meta
+	name="viewport"
+	content="width=device-width, initial-scale=1">
+<meta http-equiv="no-cache">
+<meta
+	http-equiv="Expires"
+	content="-1">
+<meta
+	http-equiv="Cache-Control"
+	content="no-cache">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>Contagem</title>
+
+<!-- Bootstrap -->
+<link
+	href="css/bootstrap.min.css"
+	rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body
+	ng-app="ffge"
+	ng-init="load()"
+	ng-controller="FFCtrl as ff">
+
+	<div
+		class="well well-sm"
+		style="background-color: green"></div>
+
+	<div class="col-xs-12 col-md-12">
+		<div
+			class="row"
+			style="padding-left: 50px">
+			<img
+				id="ffgeImage"
+				src="img/cipa.png">
+		</div>
+		<div
+			class="row"
+			style="padding-left: 50px">
+			<h2>
+				<label>Estamos trabalhando há </label>
+				<label style="color: red">{{ff.dias}}</label>
+				<label> dia(s) sem ser grosso e escroto.</label>
+			</h2>
+		</div>
+		<div
+			class="row"
+			style="padding-left: 50px">
+			<h2>
+				<label>Nosso recorde é de </label>
+				<label style="color: red">{{ff.recorde}}</label>
+				<label>dias.</label>
+			</h2>
+		</div>
+		<div
+			class="row"
+			style="padding-left: 50px">
+			<ul class="list-group">
+				<li class="list-group-item active">
+					Histórico de Incidentes
+					<div
+						class="btn-group"
+						role="group">
+						<button
+							style="margin-left: 15px"
+							class="btn btn-default btn-sm"
+							ng-click="openModal()">Cadastrar</button>
+					</div>
+				</li>
+				<!-- uib-popover="{{grosseria.descricao}}" -->
+				<li
+					class="list-group-item"
+					ng-repeat="grosseria in ff.grosserias">
+					<div>
+						<span>{{grosseria.data.date.day}}/{{grosseria.data.date.month}}/{{grosseria.data.date.year}}</span>
+						<span>- foi {{grosseria.acao | lowercase}}</span>
+						<span> com {{grosseria.vitima}}</span>
+						<span
+							popover-trigger="'mouseenter'"
+							uib-popover-template="templateReplica"
+							style="color: brown; float: right">réplica do ofensor</span>
+						<span style="float: right">&nbsp-&nbsp</span>
+						<span
+							popover-trigger="'mouseenter'"
+							uib-popover-template="templateDescricao"
+							style="color: blue; float: right">descrição da ofensa</span>
+					</div>
+				</li>
+			</ul>
+
+			<script
+				type="text/ng-template"
+				id="templateDescricao.html">
+        	<div class="form-group">
+          		<label>Descrição:</label>
+          		<h4>{{grosseria.descricao || 'Não há descrição'}}</h4>
+        	</div>
+   		 </script>
+			<script
+				type="text/ng-template"
+				id="templateReplica.html">
+        	<div class="form-group">
+          		<label>Réplica:</label>
+          		<h4>{{grosseria.replica || 'Ofensor não acha digno de réplica, o que pode ser considerado uma grosseria'}}</h4>
+        	</div>
+   		 </script>
+
+		</div>
+		<div class="row">
+			<div
+				class="well well-sm"
+				style="background-color: green; padding-left: 50px">
+				<h2 style="color: white; font-weight: bold">Colabore para melhorar este índice.</h2>
+			</div>
+		</div>
+	</div>
+
+	<script
+		type="text/ng-template"
+		id="modal.html">
+         <div class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button
+						type="button"
+						class="close"
+						data-dismiss="modal"
+						aria-label="Fechar"
+						ng-click="close('Cancel')">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Editar propriedade</h4>
+				</div>
+				<div class="modal-body">
+					<form
+						name="modal"
+						novalidate="novalidate"
+						ng-submit="sendOffense()"
+						ng-submit-force="false">
+						<div class="form-group">
+							<label for="vitima">Vitima</label>
+							<input
+								type="text"
+								id="nome"
+								name="nome"
+								class="form-control"
+								ng-model="modal.vitima"
+								placeholder="Nome da vítima"
+								required
+								ng-maxlength="70">
+						</div>
+						<div class="form-group">
+							<label for="acao">Ação</label>
+							<div class="input-group-btn">
+								<button
+									type="button"
+									class="btn btn-default dropdown-toggle"
+									data-toggle="dropdown"
+									aria-haspopup="true"
+									aria-expanded="false">
+									{{modal.acao}}
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li>
+										<a ng-click="modal.acao='Grosseiro'">Grosseiro</a>
+									</li>
+									<li>
+										<a ng-click="modal.acao='Escroto'">Escroto</a>
+									</li>
+									<li>
+										<a ng-click="modal.acao='Grosseiro e Escroto'">Grosseiro e Escroto</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="form-group">
+							<label>Descrição</label>
+							<textarea
+								id="descricao"
+								name="descricao"
+								class="form-control"
+								style="resize : vertical"
+								placeholder="Descrição da ofensa"
+								ng-model="modal.descricao"
+								ng-maxlength="250"></textarea>
+						</div>
+						<button
+							type="button"
+							role="button"
+							class="btn btn-primary"
+							ng-click="sendOffense(ff.acao, ff.vitima)"
+							data-dismiss="modal">Salvar</button>
+						<button
+							type="button"
+							role="button"
+							class="btn btn-default"
+							ng-click="close('cancel')"
+							data-dismiss="modal">Cancelar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>
+
+	<script
+		src="js/jquery.min.js"
+		type="text/javascript"></script>
+	<script
+		src="js/bootstrap.min.js"
+		type="text/javascript"></script>
+	<script
+		src="js/angular.min.js"
+		type="text/javascript"></script>
+	<script
+		src="js/ui-bootstrap-tpls-2.0.0.js"
+		type="text/javascript"></script>
+	<script
+		src="js\angular-modal-service.js"
+		type="text/javascript"></script>
+	<!-- <script
+		src="js/kc.js"
+		type="text/javascript"></script> -->
+	<script
+		src="js/ff.js"
+		type="text/javascript"></script>
+	<script
+		src="js/controller.js"
+		type="text/javascript"></script>
+
+
+</body>
+</html>
