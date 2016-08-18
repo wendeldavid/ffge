@@ -11,7 +11,7 @@ app.controller('FFCtrl', [ '$scope', '$http', 'ModalService', function($scope, $
     $scope.ff.grosserias = [];
 
     $scope.load = function() {
-        $http.get('http://pcbnu007999:8888/ffge/Servlet').then(function(success) {
+        $http.get('http://pcbnu007999:8188/ffge/Servlet').then(function(success) {
             $scope.ff = success.data.ff;
             $scope.ff.grosserias = success.data.ff.grosserias.reverse();
         }, function(error) {
@@ -29,8 +29,29 @@ app.controller('FFCtrl', [ '$scope', '$http', 'ModalService', function($scope, $
             modal.close.then(function(params) {
                 console.log(params);
                 if (!!params) {
-                    $http.put('http://pcbnu007999:8888/ffge/Servlet', params).then(function(sucess) {
+                    $http.put('http://pcbnu007999:8188/ffge/Servlet', params).then(function(sucess) {
                         $scope.load();
+                    }, function(error) {
+                        console.log(error);
+                    });
+
+                }
+            });
+        });
+    }
+
+    $scope.openSubscribe = function() {
+        ModalService.showModal({
+            templateUrl : 'email.html',
+            controller : "EmailController"
+        }).then(function(modal) {
+            modal.element.modal();
+
+            modal.close.then(function(params) {
+                console.log(params);
+                if (!!params) {
+                    $http.put('http://pcbnu007999:8188/ffge/Subscribe', params).then(function(sucess) {
+                        console.log('email cadastrado com sucesso!');
                     }, function(error) {
                         console.log(error);
                     });
@@ -54,6 +75,20 @@ app.controller('ModalController', function($scope, close) {
     $scope.modal.acao = 'Grosseiro';
 
     $scope.sendOffense = function() {
+        close($scope.modal, 500);
+    }
+
+    $scope.close = function(result) {
+        close(undefined, 500); // close, but give 500ms for bootstrap to animate
+    }
+
+});
+
+app.controller('EmailController', function($scope, close) {
+
+    $scope.email = {};
+
+    $scope.sendEmail = function() {
         close($scope.modal, 500);
     }
 

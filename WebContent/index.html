@@ -43,12 +43,13 @@
 	ng-init="load()"
 	ng-controller="FFCtrl as ff">
 
-	<div ng-if="false" class="email">
+	<div class="email">
 		<a
 			uib-tooltip="Increva-se para receber e-mail"
 			popover-trigger="'mouseenter'"
 			tooltip-placement="left"
-			class="btn btn-default btn-lg">
+			class="btn btn-default btn-lg"
+			ng-click="openSubscribe()">
 			<i
 				class="fa fa-envelope fa-lg"
 				aria-hidden="true"></i>
@@ -177,7 +178,7 @@
 						ng-click="close('Cancel')">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">Editar propriedade</h4>
+					<h4 class="modal-title">Cadastro de Ofensa</h4>
 				</div>
 				<div class="modal-body">
 					<form
@@ -236,6 +237,59 @@
 							role="button"
 							class="btn btn-primary"
 							ng-click="sendOffense(ff.acao, ff.vitima)"
+							data-dismiss="modal">Salvar</button>
+						<button
+							type="button"
+							role="button"
+							class="btn btn-default"
+							ng-click="close('cancel')"
+							data-dismiss="modal">Cancelar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>
+
+
+	<script
+		type="text/ng-template"
+		id="email.html">
+         <div class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button
+						type="button"
+						class="close"
+						data-dismiss="email"
+						aria-label="Fechar"
+						ng-click="close('cancel')">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Cadastrar e-mail</h4>
+				</div>
+				<div class="modal-body">
+					<form
+						name="email"
+						novalidate="novalidate"
+						ng-submit-force="false">
+						<div class="form-group">
+							<label for="email">Endereço de e-mail</label>
+							<input
+								type="email"
+								id="email"
+								name="email"
+								class="form-control"
+								ng-model="modal.email"
+								placeholder="endereço@dominio.com.br"
+								required>
+						</div>
+						<button
+							type="submit"
+							role="button"
+							class="btn btn-primary"
+							ng-click="sendEmail(modal.email)"
 							data-dismiss="modal">Salvar</button>
 						<button
 							type="button"
