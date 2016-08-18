@@ -11,8 +11,9 @@ app.controller('FFCtrl', [ '$scope', '$http', 'ModalService', function($scope, $
     $scope.ff.grosserias = [];
 
     $scope.load = function() {
-        $http.get('http://pcbnu007999:8188/ffge/Servlet').then(function(success) {
+        $http.get('http://pcbnu007999:8888/ffge/Servlet').then(function(success) {
             $scope.ff = success.data.ff;
+            $scope.ff.grosserias = success.data.ff.grosserias.reverse();
         }, function(error) {
             console.log(error);
         });
@@ -28,7 +29,7 @@ app.controller('FFCtrl', [ '$scope', '$http', 'ModalService', function($scope, $
             modal.close.then(function(params) {
                 console.log(params);
                 if (!!params) {
-                    $http.put('http://pcbnu007999:8188/ffge/Servlet', params).then(function(sucess) {
+                    $http.put('http://pcbnu007999:8888/ffge/Servlet', params).then(function(sucess) {
                         $scope.load();
                     }, function(error) {
                         console.log(error);
