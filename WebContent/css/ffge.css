@@ -1,0 +1,10 @@
+.no-border {
+	border : 0px !important;
+}
+
+.email {
+	z-index: 1000;
+	position: fixed;
+	right: 10px;
+	top: 10px;
+}
