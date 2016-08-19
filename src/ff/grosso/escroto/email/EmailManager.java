@@ -51,7 +51,9 @@ public class EmailManager {
 
 	public static final void addEmail(String email) {
 		List<String> emails = getEmailFile();
-		emails.add(email);
+		if (!emails.contains(email)) {
+			emails.add(email);
+		}
 		saveEmails(emails);
 	}
 
