@@ -35,7 +35,7 @@ public class DataHandler {
 		return result.append("}").toString();
 	}
 
-	public static void writeData(String json) {
+	public static Grosseria writeData(String json) {
 		Gson data = builder.create();
 
 		FF ff = data.fromJson(innerRead(), FF.class);
@@ -60,6 +60,8 @@ public class DataHandler {
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+
+		return grosseria;
 	}
 
 	private static String innerRead() {

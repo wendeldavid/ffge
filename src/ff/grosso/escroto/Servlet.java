@@ -16,6 +16,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ff.grosso.escroto.data.Grosseria;
+import ff.grosso.escroto.email.EmailNotification;
+
 /**
  * Servlet implementation class Servlet
  */
@@ -68,7 +71,9 @@ public class Servlet extends HttpServlet {
 			throw new RuntimeException(e);
 		}
 
-		DataHandler.writeData(sb.toString());
+		Grosseria grosseria = DataHandler.writeData(sb.toString());
+
+		EmailNotification.sendMail(grosseria);
 	}
 
 }

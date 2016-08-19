@@ -16,7 +16,7 @@ public class EmailManager {
 
 	private static final File file = new File("c:/users/wendel.przygoda", "ffge.mail");
 
-	private static final List<String> getEmailFile() {
+	public static final String getEmails() {
 		StringBuilder sb = new StringBuilder();
 		synchronized (file) {
 			try (BufferedReader reader = new BufferedReader(new FileReader(file));) {
@@ -31,11 +31,15 @@ public class EmailManager {
 				e.printStackTrace();
 			}
 		}
-		return new ArrayList<String>(Arrays.asList(sb.toString().split(";")));
+		return sb.toString();
+	}
+
+	private static final List<String> getEmailFile() {
+		return new ArrayList<String>(Arrays.asList(getEmails().split(",")));
 	}
 
 	private static final void saveEmails(List<String> emails) {
-		String toFile = emails.stream().collect(Collectors.joining(";"));
+		String toFile = emails.stream().collect(Collectors.joining(","));
 		synchronized (file) {
 			try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
 				writer.write(toFile);
