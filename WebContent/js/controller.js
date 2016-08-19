@@ -50,8 +50,12 @@ app.controller('FFCtrl', [ '$scope', '$http', 'ModalService', function($scope, $
             modal.close.then(function(params) {
                 console.log(params);
                 if (!!params) {
-                    $http.put('http://pcbnu007999:8188/ffge/Subscribe', params).then(function(sucess) {
-                        console.log('email cadastrado com sucesso!');
+                    $http.post('http://pcbnu007999:8188/ffge/Subscribe', params).then(function(sucess) {
+                        if (params.acao == 'subscribe') {
+                            console.log('email cadastrado com sucesso!');
+                        } else if (params.acao == 'unsubscribe') {
+                            console.log('email descadastrado com sucesso!');
+                        }
                     }, function(error) {
                         console.log(error);
                     });
@@ -86,9 +90,13 @@ app.controller('ModalController', function($scope, close) {
 
 app.controller('EmailController', function($scope, close) {
 
-    $scope.email = {};
+    $scope.subscribeEmail = function() {
+        $scope.modal.acao = 'subscribe';
+        close($scope.modal, 500);
+    }
 
-    $scope.sendEmail = function() {
+    $scope.unsubscribeEmail = function() {
+        $scope.modal.acao = 'unsubscribe';
         close($scope.modal, 500);
     }
 

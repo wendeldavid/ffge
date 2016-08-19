@@ -286,11 +286,17 @@
 								required>
 						</div>
 						<button
-							type="submit"
+							type="button"
 							role="button"
 							class="btn btn-primary"
-							ng-click="sendEmail(modal.email)"
-							data-dismiss="modal">Salvar</button>
+							ng-click="subscribeEmail()"
+							data-dismiss="modal">Inscrever-se</button>
+						<button
+							type="button"
+							role="button"
+							class="btn btn-danger"
+							ng-click="unsubscribeEmail()"
+							data-dismiss="modal">Cancelar Inscrição</button>
 						<button
 							type="button"
 							role="button"
