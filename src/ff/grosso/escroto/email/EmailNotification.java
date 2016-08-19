@@ -28,7 +28,7 @@ public class EmailNotification {
 
 		try {
 			MimeMessage msg = new MimeMessage(session);
-			msg.setFrom("monitor@ffge.com");
+			msg.setFrom(new InternetAddress("monitor@ffge.com"));
 			Address[] addresses = InternetAddress.parse(EmailManager.getEmails());
 			msg.addRecipients(Message.RecipientType.BCC, addresses);
 			msg.setSubject("Nova ofensa contra " + grosseria.getVitima());
