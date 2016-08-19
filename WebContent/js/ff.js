@@ -23,8 +23,11 @@ function ffQueueKey(e) {
 
             var imgIndex = Math.floor((Math.random() * 7) + 1);
 
-            var image = document.getElementById("ffgeImage");
+            var image = document.getElementById('ffgeImage');
             image.src = 'img/ff' + imgIndex + '.jpg';
+
+            var player = document.getElementById('ffgePlayer');
+            player.style.display = '';
         }
     }
 }
