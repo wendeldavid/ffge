@@ -1,5 +1,5 @@
 {
-  "dias": 0,
+  "dias": 1,
   "recorde": 11,
   "grosserias": [
     {
@@ -167,19 +167,164 @@
       "data": {
         "date": {
           "year": 2016,
-          "month": 7,
-          "day": 29
+          "month": 8,
+          "day": 2
+        },
+        "time": {
+          "hour": 11,
+          "minute": 35,
+          "second": 51,
+          "nano": 610000000
+        }
+      },
+      "acao": "Escroto",
+      "vitima": "Jair",
+      "descricao": "Perguntei ao FF sobre o almoço de hoje, ele disse que não tinha horário pois tem membros do almoço no páginas do futuro, logo em seguida me enviou uma mensagem que achei escrotisse da parte dele, \"mas eu te aviso pelo whats, 5 minutos depois de sairmos\". A prova está em \\\\pcbnu009335\\public\\escrotisse.jpg ",
+      "replica": "Não acho válido o relato do Candinho como escrotice por 2 motivos:\n1.\tO teor da mensagem de avisar 5 minutos depois de sair, é uma piada interna do grupo de almoço. Não caracterizando assim ofensa ou exclusão do Candinho do almoço;\n2.\tEnviei a mensagem incentivado pelo Wendel, que inclusive foi quem criou a piada de não esperar o Candinho. Notem que parece ser uma situação meio premeditada, pois o Wendel sugeriu a brincadeira, sendo ele quem manda a URL do portal para cadastro da \"escrotisse\" que ele mesmo criou."
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 8,
+          "day": 2
         },
         "time": {
           "hour": 13,
-          "minute": 20,
-          "second": 1,
-          "nano": 593000000
+          "minute": 37,
+          "second": 3,
+          "nano": 588000000
+        }
+      },
+      "acao": "Grosseiro e Escroto",
+      "vitima": "Wendel",
+      "descricao": "Ofensor foi grosso e escroto na réplica insinuando que eu premeditei tudo, o que não há prova nenhuma disto. Além de tentar denegrir minha imagem sem provas está tentando gerar discórdia pois eu apenas respondi a url que foi solicitado pelo candinho, e isto não configura crime."
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 8,
+          "day": 3
+        },
+        "time": {
+          "hour": 12,
+          "minute": 44,
+          "second": 33,
+          "nano": 465000000
+        }
+      },
+      "acao": "Grosseiro e Escroto",
+      "vitima": "todos",
+      "descricao": "Mandou todos enrolarem o portal e atochar ele no c*"
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 8,
+          "day": 8
+        },
+        "time": {
+          "hour": 12,
+          "minute": 45,
+          "second": 0,
+          "nano": 294000000
         }
       },
       "acao": "Grosseiro",
-      "vitima": "teste",
-      "descricao": "teste"
+      "vitima": "Fabricio",
+      "descricao": "Numa conversa sobre olimpiadas ele retruca um comentário simples com: \"QUE CROSSFIT? CALA BOCA!!!!\""
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 8,
+          "day": 12
+        },
+        "time": {
+          "hour": 16,
+          "minute": 56,
+          "second": 34,
+          "nano": 680000000
+        }
+      },
+      "acao": "Escroto",
+      "vitima": "Montanha",
+      "descricao": "Mono disse que  trocou de lugar para focar no projeto e que aqui tem o pessoal legal para conversar, ai o João disse: \"Mas o montanha não votou em mim para destaque, ele não conta como pessoa legal\""
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 8,
+          "day": 16
+        },
+        "time": {
+          "hour": 15,
+          "minute": 36,
+          "second": 43,
+          "nano": 442000000
+        }
+      },
+      "acao": "Grosseiro e Escroto",
+      "vitima": "Suzane",
+      "descricao": "Foi grosseiro reclamando que agora tem gente sentando na frente dele e foi escroto dando um chutão no meu pé machucado por baixo da mesa"
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 8,
+          "day": 20
+        },
+        "time": {
+          "hour": 17,
+          "minute": 59,
+          "second": 37,
+          "nano": 546000000
+        }
+      },
+      "acao": "Grosseiro",
+      "vitima": "Fabricio",
+      "descricao": "Ao questionar a demora do Fala Fina para largar as coisas e ir embora fui atacado com um sonoro \"VAI SE F...\", onde o agressor se aproveitou do fato de ser sábado para falar mais alto ainda que o normal."
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 8,
+          "day": 24
+        },
+        "time": {
+          "hour": 13,
+          "minute": 42,
+          "second": 30,
+          "nano": 720000000
+        }
+      },
+      "acao": "Escroto",
+      "vitima": "Jordan Laus",
+      "descricao": "Reincidente. De forma indireta, associou que o Jordan teria amizade com um indiano genérico que almoçava no Restaurante 25. Mesmo ciente de que não há nenhum parentesco, com nenhuma pessoa de origem indiana, árabe ou afins, continua a fazer este tipo de associação."
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 8,
+          "day": 25
+        },
+        "time": {
+          "hour": 14,
+          "minute": 41,
+          "second": 37,
+          "nano": 211000000
+        }
+      },
+      "acao": "Grosseiro e Escroto",
+      "vitima": "Jordan Laus",
+      "descricao": "Re-Reincidente. Hoje, o Fala Fina foi grosseiro ao me cumprimentar com um \"Namastê\" (com as mãos juntas), e mais tarde falou que eu não poderia pegar o Pokémon Taurus, porque na Índia a vaca é sagrada."
     }
   ]
 }
