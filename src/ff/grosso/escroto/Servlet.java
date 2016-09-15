@@ -1,11 +1,16 @@
 package ff.grosso.escroto;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Properties;
@@ -26,6 +31,7 @@ import ff.grosso.escroto.email.EmailNotification;
 public class Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	public static final String USER_PATH = "c:/users/wendel.przygoda";
 	public static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd - HH:mm:ss");
 	private static int count = 0;
 
@@ -40,7 +46,8 @@ public class Servlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		File propFile = new File("c:/users/wendel.przygoda", "ffge.properties");
+		// acessos
+		File propFile = new File(USER_PATH, "ffge.properties");
 		Properties prop = new Properties();
 		prop.load(new FileInputStream(propFile));
 
@@ -50,9 +57,10 @@ public class Servlet extends HttpServlet {
 
 		count++;
 		prop.put("acessos", String.valueOf(count));
-		System.out.println(count + " : " + LocalDateTime.now().format(formatter));
 
 		prop.store(new FileOutputStream(propFile), "");
+
+		log("Acesso", request);
 
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
@@ -61,6 +69,8 @@ public class Servlet extends HttpServlet {
 
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		log("Cadastro", req);
+
 		StringBuilder sb = new StringBuilder();
 
 		try (BufferedReader reader = new BufferedReader(new InputStreamReader(req.getInputStream()))) {
@@ -74,6 +84,33 @@ public class Servlet extends HttpServlet {
 		Grosseria grosseria = DataHandler.writeData(sb.toString());
 
 		EmailNotification.sendMail(grosseria);
+	}
+
+	private static final void log(String action, HttpServletRequest request) {
+		try {
+			// log
+			String ipAddress = request.getRemoteAddr();
+			InetAddress host = InetAddress.getByName(ipAddress);
+
+			String log = action + ": " + LocalDateTime.now().format(formatter) + " : " + host.getHostName() + '[' + host.getHostAddress() + ']';
+
+			System.out.println(log);
+
+			File logFile = new File(USER_PATH, "ffge.log");
+
+			BufferedWriter writer = new BufferedWriter(new FileWriter(logFile));
+			writer.newLine();
+			writer.append(log);
+			writer.flush();
+			writer.close();
+
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

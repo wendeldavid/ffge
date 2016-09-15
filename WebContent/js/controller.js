@@ -11,7 +11,7 @@ app.controller('FFCtrl', [ '$scope', '$http', 'ModalService', function($scope, $
     $scope.ff.grosserias = [];
 
     $scope.load = function() {
-        $http.get(window.location.href + '/Servlet').then(function(success) {
+        $http.get(window.location.href + 'Servlet').then(function(success) {
             $scope.ff = success.data.ff;
             $scope.ff.grosserias = success.data.ff.grosserias.reverse();
         }, function(error) {
