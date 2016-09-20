@@ -29,7 +29,7 @@ app.controller('FFCtrl', [ '$scope', '$http', 'ModalService', function($scope, $
             modal.close.then(function(params) {
                 console.log(params);
                 if (!!params) {
-                    $http.put(window.location.href + '/Servlet', params).then(function(sucess) {
+                    $http.put(window.location.href + 'Servlet', params).then(function(sucess) {
                         $scope.load();
                     }, function(error) {
                         console.log(error);
