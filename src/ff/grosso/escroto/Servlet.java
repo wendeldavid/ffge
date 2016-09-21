@@ -98,9 +98,9 @@ public class Servlet extends HttpServlet {
 
 			File logFile = new File(USER_PATH, "ffge.log");
 
-			BufferedWriter writer = new BufferedWriter(new FileWriter(logFile));
+			BufferedWriter writer = new BufferedWriter(new FileWriter(logFile, true));
+			writer.write(log);
 			writer.newLine();
-			writer.append(log);
 			writer.flush();
 			writer.close();
 
