@@ -50,7 +50,7 @@ app.controller('FFCtrl', [ '$scope', '$http', 'ModalService', function($scope, $
             modal.close.then(function(params) {
                 console.log(params);
                 if (!!params) {
-                    $http.post(window.location.href + '/Subscribe', params).then(function(sucess) {
+                    $http.post(window.location.href + 'Subscribe', params).then(function(sucess) {
                         if (params.acao == 'subscribe') {
                             console.log('email cadastrado com sucesso!');
                         } else if (params.acao == 'unsubscribe') {
