@@ -1,6 +1,6 @@
 {
-  "dias": 1,
-  "recorde": 11,
+  "dias": 0,
+  "recorde": 14,
   "grosserias": [
     {
       "data": {
@@ -325,6 +325,277 @@
       "acao": "Grosseiro e Escroto",
       "vitima": "Jordan Laus",
       "descricao": "Re-Reincidente. Hoje, o Fala Fina foi grosseiro ao me cumprimentar com um \"Namastê\" (com as mãos juntas), e mais tarde falou que eu não poderia pegar o Pokémon Taurus, porque na Índia a vaca é sagrada."
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 8,
+          "day": 30
+        },
+        "time": {
+          "hour": 13,
+          "minute": 34,
+          "second": 25,
+          "nano": 731000000
+        }
+      },
+      "acao": "Grosseiro e Escroto",
+      "vitima": "Atar band e Presente de final do ano",
+      "descricao": "\"Atar band enfia no C#!!\""
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 9,
+          "day": 13
+        },
+        "time": {
+          "hour": 9,
+          "minute": 0,
+          "second": 18,
+          "nano": 975000000
+        }
+      },
+      "acao": "Escroto",
+      "vitima": "Montanha",
+      "descricao": "Fala fina chega para trabalhar, olha para a minha cara e diz que já teve mais medo da minha cara de psicopata, mas que ainda acha minha cara como a de um psicopata",
+      "replica": "\\\\seniorpdc\\Usuarios\\Joaom\\replicaMontanha.jpg"
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 9,
+          "day": 20
+        },
+        "time": {
+          "hour": 18,
+          "minute": 5,
+          "second": 55,
+          "nano": 76000000
+        }
+      },
+      "acao": "Grosseiro",
+      "vitima": "Sid",
+      "descricao": "Após apontar para o Fala Fina onde fica o menu do LDAP no Artifactory ele me mandou tomar no c*. Depois ele ficou resmungando outras coisa, porém eu consegui ouvir claramente ele sendo grosseiro."
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 9,
+          "day": 21
+        },
+        "time": {
+          "hour": 10,
+          "minute": 0,
+          "second": 10,
+          "nano": 608000000
+        }
+      },
+      "acao": "Grosseiro e Escroto",
+      "vitima": "Marina Uliano",
+      "descricao": "Eu disse que o dia estava lindo e queria aproveitar, quando o Fala Fina me mandou fazer concurso para gari :\u0027("
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 9,
+          "day": 21
+        },
+        "time": {
+          "hour": 10,
+          "minute": 10,
+          "second": 24,
+          "nano": 576000000
+        }
+      },
+      "acao": "Grosseiro",
+      "vitima": "Marina",
+      "descricao": "Após o cadastro da Marina o Fala Fina olho pra mim e falou: \"É bem assim que eu falei, aham!\", insinuando que ela mentiu."
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 9,
+          "day": 21
+        },
+        "time": {
+          "hour": 10,
+          "minute": 17,
+          "second": 50,
+          "nano": 774000000
+        }
+      },
+      "acao": "Grosseiro e Escroto",
+      "vitima": "Todas as pessoas do portal",
+      "descricao": "Fala Fina, está lendo todos os cadastros do portal e falou de boca cheia: \"São uns cretinos!!!\"."
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 9,
+          "day": 27
+        },
+        "time": {
+          "hour": 13,
+          "minute": 13,
+          "second": 21,
+          "nano": 679000000
+        }
+      },
+      "acao": "Grosseiro e Escroto",
+      "vitima": "Sid",
+      "descricao": "Falei para o Fala Fina, não seja tão grosso com o Wallace. Ele olhou para mim e disse \"quem te nomeou Conselho Tutelar?, crio minhas crianças como eu quiser\"."
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 10,
+          "day": 6
+        },
+        "time": {
+          "hour": 17,
+          "minute": 36,
+          "second": 0,
+          "nano": 306000000
+        }
+      },
+      "acao": "Grosseiro e Escroto",
+      "vitima": "Sid",
+      "descricao": "A Luciana passou na minha mesa e perguntou \"O que você fez com a barba Sid?\". Falei para ela, cortei para ser mais simpático. Assim que terminei minha resposta o Fala Fina olhou pra mim e disse: \"Nem nascendo de novo!!!\""
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 10,
+          "day": 21
+        },
+        "time": {
+          "hour": 12,
+          "minute": 29,
+          "second": 10,
+          "nano": 489000000
+        }
+      },
+      "acao": "Grosseiro",
+      "vitima": "Fabricio",
+      "descricao": "Por um motivo fútil ele disse \"vai se f...\", e ao perceber que quebrou o recorde de 14 dias desferiu em meu ombro 3 golpes de guarda-chuva.\nPara completar deu um quarto golpe no mesmo ombro (esquerdo) dizendo \"e agora no direito então\" (?!?)"
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 10,
+          "day": 21
+        },
+        "time": {
+          "hour": 12,
+          "minute": 54,
+          "second": 46,
+          "nano": 693000000
+        }
+      },
+      "acao": "Grosseiro e Escroto e Sádico",
+      "vitima": "Suzane",
+      "descricao": "Eu estava há uma semana praticando os ensinamentos do novo Fala Fina para me tornar uma pessoa melhor e só porque falei algo (não direcionado a ninguém) que ele achou ofensivo, prontamente levantou-se da cadeira e começou a me agredir verbalmente, com frases como: \"VIU COMO EU ME SINTO QUANDO QUEBRO MEU RECORDE?? É BOM NÉ? TÁ VENDO?\" E mesmo vendo que eu estava visivelmente triste e abalada com minha perda, ele continuou por um longo tempo apontando o dedo para mim, rindo alto e se divertindo com a dor e derrota alheia."
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 10,
+          "day": 21
+        },
+        "time": {
+          "hour": 13,
+          "minute": 5,
+          "second": 20,
+          "nano": 825000000
+        }
+      },
+      "acao": "Grosseiro e Escroto",
+      "vitima": "Todos",
+      "descricao": "Software que é bom nessa empresa nada, agora o portal (ffge) sempre com novidades."
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 10,
+          "day": 21
+        },
+        "time": {
+          "hour": 13,
+          "minute": 7,
+          "second": 34,
+          "nano": 704000000
+        }
+      },
+      "acao": "Grosseiro",
+      "vitima": "Tarcisio",
+      "descricao": "Escrotizou o estilo de futebol"
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 10,
+          "day": 21
+        },
+        "time": {
+          "hour": 13,
+          "minute": 9,
+          "second": 12,
+          "nano": 21000000
+        }
+      },
+      "acao": "Escroto",
+      "vitima": "Todos do portal",
+      "descricao": "Fala fina está fazendo pouco do pessoal que cadastra as ofensas no portal, dizendo que vai pedir pro Wendel colocar ao final de todas reclamações tbm que ele puxou o cabelo e jogou uma pedra. Ou seja, está dizendo que todo mundo aqui exagera e mente sobre os atos dele."
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 10,
+          "day": 21
+        },
+        "time": {
+          "hour": 13,
+          "minute": 11,
+          "second": 16,
+          "nano": 927000000
+        }
+      },
+      "acao": "Escroto",
+      "vitima": "Administradores do portal",
+      "descricao": "Ele cadastrou uma issue irrelevante satirizando de forma escrota a ferramenta e sua intenção de melhorar o ambiente de trabalho: https://github.com/wendeldavid/ffge/issues/11"
+    },
+    {
+      "data": {
+        "date": {
+          "year": 2016,
+          "month": 10,
+          "day": 21
+        },
+        "time": {
+          "hour": 13,
+          "minute": 11,
+          "second": 39,
+          "nano": 250000000
+        }
+      },
+      "acao": "Grosseiro e Escroto",
+      "vitima": "Todos",
+      "descricao": "Não contente em afirmar que todos estão mentindo no portal, criou uma issue para comprovar a grosseira: https://github.com/wendeldavid/ffge/issues/11"
     }
   ]
 }
