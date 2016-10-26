@@ -13,6 +13,9 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Properties;
 
 import javax.servlet.ServletException;
@@ -34,18 +37,38 @@ public class Servlet extends HttpServlet {
 	public static final String USER_PATH = "c:/users/wendel.przygoda";
 	public static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd - HH:mm:ss");
 	private static int count = 0;
+	private static final List<String> filterAddress = new ArrayList<>();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public Servlet() {
 		super();
+		setupFilter();
+	}
+
+	private void setupFilter() {
+		File propFile = new File(Servlet.USER_PATH, "ffge.properties");
+		Properties prop = new Properties();
+		try {
+			prop.load(new FileInputStream(propFile));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		filterAddress.addAll(Arrays.asList(prop.getProperty("ignore").split(",")));
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// if (!doFilter(request, response)) {
+		// return;
+		// }
+
 		// acessos
 		File propFile = new File(USER_PATH, "ffge.properties");
 		Properties prop = new Properties();
@@ -69,6 +92,10 @@ public class Servlet extends HttpServlet {
 
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		if (!doFilter(req, resp)) {
+			return;
+		}
+
 		log("Cadastro", req);
 
 		StringBuilder sb = new StringBuilder();
@@ -84,6 +111,27 @@ public class Servlet extends HttpServlet {
 		Grosseria grosseria = DataHandler.writeData(sb.toString());
 
 		EmailNotification.sendMail(grosseria);
+	}
+
+	public static boolean doFilter(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		String ipAddress = request.getRemoteAddr();
+		InetAddress host = InetAddress.getByName(ipAddress);
+
+		for (String filter : filterAddress) {
+			if (ipAddress.toUpperCase().contains(filter.toUpperCase()) || //
+					host.getHostAddress().toUpperCase().contains(filter.toUpperCase()) || //
+					host.getHostName().toUpperCase().contains(filter.toUpperCase())) {
+
+				response.setCharacterEncoding("UTF-8");
+				response.setContentType("application/json");
+				response.sendError(HttpServletResponse.SC_FORBIDDEN, "ffdenied");
+
+				log("Cadastro NEGADO", request);
+
+				return false;
+			}
+		}
+		return true;
 	}
 
 	private static final void log(String action, HttpServletRequest request) {

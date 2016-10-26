@@ -48,7 +48,7 @@
 			uib-tooltip="Increva-se para receber e-mail"
 			popover-trigger="'mouseenter'"
 			tooltip-placement="left"
-			class="btn btn-default btn-lg"
+			class="btn btn-warning btn-lg"
 			ng-click="openSubscribe()">
 			<i
 				class="fa fa-envelope fa-lg"
@@ -87,88 +87,86 @@
 			</h2>
 		</div>
 
-		<div
-			class="row"
-			style="padding-left: 50px">
-			<ul class="list-group">
-				<li class="list-group-item active">
-					Histórico de Incidentes
-					<div
-						class="btn-group"
-						role="group">
-						<button
-							style="margin-left: 15px"
-							class="btn btn-default btn-sm"
-							ng-click="openModal()">Cadastrar</button>
+		<div class="row">
+			<div class="col-md-12 col-sm-12">
+				<div class="list-group">
+					<div class="list-group-item active">
+						Histórico de Incidentes
+						<div
+							class="btn-group"
+							role="group">
+							<button
+								style="margin-left: 15px"
+								class="btn btn-default btn-sm"
+								ng-click="openModal()">Cadastrar</button>
+						</div>
+						<div
+							id="ffgePlayer"
+							style="float: right; display: none">
+							<audio controls>
+								<source
+									src="media/falafinacast.wav"
+									type="audio/wav">
+								<source
+									src="media/falafinacast.mp3"
+									type="audio/mpeg">
+								<p>Your browser does not support the audio element.</p>
+							</audio>
+						</div>
 					</div>
 					<div
-						id="ffgePlayer"
-						style="float: right; display: none">
-						<audio controls>
-							<source
-								src="media/falafinacast.wav"
-								type="audio/wav">
-							<source
-								src="media/falafinacast.mp3"
-								type="audio/mpeg">
-							<p>Your browser does not support the audio element.</p>
-						</audio>
+						class="panel panel-default no-margin"
+						ng-mouseenter="grosseriaActiveClass = 'mouse-over'"
+						ng-mouseleave="grosseriaActiveClass = ''"
+						ng-repeat="grosseria in getPage(currentPage)">
+						<div
+							class="panel-heading no-border"
+							role="button"
+							ng-class-odd="'listItemOdd'"
+							ng-class="grosseriaActiveClass"
+							ng-click="grosseria.open = !grosseria.open; grosseriaIconClass = grosseria.open ? 'fa-minus' : 'fa-plus'">
+							<span>{{grosseria.data.date.day}}/{{grosseria.data.date.month}}/{{grosseria.data.date.year}}</span>
+							<span>- {{grosseria.data.time.hour}}:{{grosseria.data.time.minute}}</span>
+							<span>- foi {{grosseria.acao | lowercase}}</span>
+							<span> com {{grosseria.vitima}}</span>
+							<i
+								style="float: right"
+								class="fa fa-plus"
+								role="button"
+								ng-class="grosseriaActiveClass"></i>
+						</div>
+						<div
+							class="panel-collapse collapse in"
+							ng-show="grosseria.open">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-12 col-sm-12">
+										<label>Descrição:</label>
+										<span>{{grosseria.descricao}}</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 col-sm-12">
+										<label>Réplica:</label>
+										<span>{{grosseria.replica || 'Não achou que vale uma réplica, o que pode ser considerado uma grosseria'}}</span>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-				</li>
-				<!-- uib-popover="{{grosseria.descricao}}" -->
-				<li
-					class="list-group-item"
-					ng-repeat="grosseria in getPage(currentPage)">
-					<div>
-						<span>{{grosseria.data.date.day}}/{{grosseria.data.date.month}}/{{grosseria.data.date.year}}</span>
-						<span>- {{grosseria.data.time.hour}}:{{grosseria.data.time.minute}}</span>
-						<span>- foi {{grosseria.acao | lowercase}}</span>
-						<span> com {{grosseria.vitima}}</span>
-						<span
-							popover-trigger="'mouseenter'"
-							popover-placement="left"
-							popover-popup-close-delay="2000"
-							uib-popover-template="templateReplica"
-							style="color: brown; float: right">réplica do ofensor</span>
-						<span style="float: right">&nbsp-&nbsp</span>
-						<span
-							popover-trigger="'mouseenter'"
-							popover-placement="left"
-							popover-popup-close-delay="2000"
-							uib-popover-template="templateDescricao"
-							style="color: blue; float: right">descrição da ofensa</span>
-					</div>
-				</li>
-				<uib-pagination
-					ng-model="currentPage"
-					total-items="ff.grosserias.length"
-					items-per-page="10"
-					class="pagination-sm"
-					boundary-links="true"
-					rotate="false"
-					first-text="<<"
-					previous-text="<"
-					next-text=">"
-					last-text=">>"></uib-pagination>
-			</ul>
-
-			<script
-				type="text/ng-template"
-				id="templateDescricao.html">
-        	<div class="form-group">
-          		<label>Descrição:</label>
-          		<h4>{{grosseria.descricao || 'Não há descrição'}}</h4>
-        	</div>
-   		 </script>
-			<script
-				type="text/ng-template"
-				id="templateReplica.html">
-        	<div class="form-group">
-          		<label>Réplica:</label>
-          		<h4>{{grosseria.replica || 'Ofensor não acha digno de réplica, o que pode ser considerado uma grosseria'}}</h4>
-        	</div>
-   		 </script>
-
+					<uib-pagination
+						ng-model="currentPage"
+						total-items="ff.grosserias.length"
+						items-per-page="10"
+						class="pagination-sm"
+						boundary-links="true"
+						rotate="false"
+						first-text="<<"
+						previous-text="<"
+						next-text=">"
+						last-text=">>"></uib-pagination>
+				</div>
+			</div>
 		</div>
 		<div class="row">
 			<div
@@ -320,6 +318,31 @@
 							ng-click="close('cancel')"
 							data-dismiss="modal">Cancelar</button>
 					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>
+
+	<script
+		type="text/ng-template"
+		id="ffdenied.html">
+         <div class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button
+						type="button"
+						class="close"
+						data-dismiss="email"
+						aria-label="Fechar"
+						ng-click="close('cancel')">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Nã nã nãããooo</h4>
+				</div>
+				<div class="modal-body">
+					<img src="img/ffdenied.gif" height="400px" width="550px" />
 				</div>
 			</div>
 		</div>

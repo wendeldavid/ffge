@@ -33,6 +33,15 @@ app.controller('FFCtrl', [ '$scope', '$http', 'ModalService', function($scope, $
                         $scope.load();
                     }, function(error) {
                         console.log(error);
+
+                        if (error.status == 403) {
+                            ModalService.showModal({
+                                templateUrl : 'ffdenied.html',
+                                controller : 'ModalController'
+                            }).then(function(modal) {
+                                modal.element.modal();
+                            });
+                        }
                     });
 
                 }
@@ -58,6 +67,15 @@ app.controller('FFCtrl', [ '$scope', '$http', 'ModalService', function($scope, $
                         }
                     }, function(error) {
                         console.log(error);
+
+                        if (error.status == 403) {
+                            ModalService.showModal({
+                                templateUrl : 'ffdenied.html',
+                                controller : 'ModalController'
+                            }).then(function(modal) {
+                                modal.element.modal();
+                            });
+                        }
                     });
 
                 }

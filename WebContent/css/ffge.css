@@ -2,9 +2,21 @@
 	border : 0px !important;
 }
 
+.no-margin {
+	margin : 0px !important;
+}
+
 .email {
 	z-index: 1000;
 	position: fixed;
 	right: 10px;
 	top: 20px;
+}
+
+.panel-heading.mouse-over {
+	background-color : #6688FF !important;
+}
+
+.listItemOdd {
+	background-color : #FFFFFF !important;
 }
