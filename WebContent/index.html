@@ -88,10 +88,29 @@
 		</div>
 
 		<div class="row">
+			<form>
+				<div class="col-md-6 col-sm-6">
+					<div class="form-group">
+						<div class="input-icon right">
+							<i class="fa fa-search"></i>
+							<input
+								class="form-control"
+								type="text"
+								ng-model="filtro"
+								autocomplete="off"
+								ng-model-options="{debounce: 1000}"
+								placeholder="filtrar ocorrência" />
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<div class="row">
 			<div class="col-md-12 col-sm-12">
 				<div class="list-group">
 					<div class="list-group-item active">
-						Histórico de Incidentes
+						<span>Histórico de Incidentes</span>
 						<div
 							class="btn-group"
 							role="group">
@@ -102,7 +121,8 @@
 						</div>
 						<div
 							id="ffgePlayer"
-							style="float: right; display: none">
+							class="right"
+							style="display: none">
 							<audio controls>
 								<source
 									src="media/falafinacast.wav"
@@ -110,7 +130,7 @@
 								<source
 									src="media/falafinacast.mp3"
 									type="audio/mpeg">
-								<p>Your browser does not support the audio element.</p>
+								<p>Use um browser decente para ouvir o falafinacast!</p>
 							</audio>
 						</div>
 					</div>
@@ -118,7 +138,8 @@
 						class="panel panel-default no-margin"
 						ng-mouseenter="grosseriaActiveClass = 'mouse-over'"
 						ng-mouseleave="grosseriaActiveClass = ''"
-						ng-repeat="grosseria in getPage(currentPage)">
+						ng-repeat="grosseria in ff.grosserias | filter : filtro | limitTo : limit : offset">
+						<!-- ng-repeat="grosseria in getPage(currentPage) | filter : filter"> -->
 						<div
 							class="panel-heading no-border"
 							role="button"
@@ -133,7 +154,7 @@
 								style="float: right"
 								class="fa fa-plus"
 								role="button"
-								ng-class="grosseriaActiveClass"></i>
+								ng-class="grosseriaIconClass"></i>
 						</div>
 						<div
 							class="panel-collapse collapse in"
@@ -155,6 +176,7 @@
 						</div>
 					</div>
 					<uib-pagination
+						ng-change="paginate()"
 						ng-model="currentPage"
 						total-items="ff.grosserias.length"
 						items-per-page="10"

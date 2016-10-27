@@ -1,9 +1,9 @@
 .no-border {
-	border : 0px !important;
+	border: 0px !important;
 }
 
 .no-margin {
-	margin : 0px !important;
+	margin: 0px !important;
 }
 
 .email {
@@ -14,9 +14,41 @@
 }
 
 .panel-heading.mouse-over {
-	background-color : #6688FF !important;
+	background-color: #6688FF !important;
 }
 
 .listItemOdd {
-	background-color : #FFFFFF !important;
+	background-color: #FFFFFF !important;
+}
+
+.input-icon {
+	position : relative;
+	left : 0;
+}
+
+.input-icon.right {
+	left : auto;
+	right : 0;
+}
+
+.input-icon.right>i {
+	left : auto;
+	right : 8px;
+	float : right;
+}
+
+.input-icon>i {
+	color : #CCCCCC;
+	position : absolute;
+	margin : 9px 2px 4px 10px;
+	z-index : 3;
+	width : 16px;
+	font-size : 16px;
+	text-align : center;
+	left : 0;
+}
+
+.input-icon.right>.form-control {
+	padding-right : 33px;
+	padding-left : 12px;
 }

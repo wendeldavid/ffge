@@ -7,8 +7,15 @@ var app = angular.module('ffge', [ 'ui.bootstrap', 'ui.bootstrap.tpls', 'angular
 app.controller('FFCtrl', [ '$scope', '$http', 'ModalService', function($scope, $http, ModalService) {
 
     $scope.currentPage = 1;
+    $scope.offset = 0;
+    $scope.limit = 9;
     $scope.ff = {};
     $scope.ff.grosserias = [];
+
+    $scope.paginate = function() {
+        $scope.offset = parseInt($scope.currentPage + '0') - 10, parseInt($scope.currentPage + '0');
+        $scope.limit = $scope.currentPage + 10;
+    }
 
     $scope.load = function() {
         $http.get(window.location.href + 'Servlet').then(function(success) {
@@ -83,12 +90,10 @@ app.controller('FFCtrl', [ '$scope', '$http', 'ModalService', function($scope, $
         });
     }
 
-    $scope.templateDescricao = 'templateDescricao.html';
-    $scope.templateReplica = 'templateReplica.html';
-
     $scope.getPage = function(currentPage) {
         return $scope.ff.grosserias.slice(parseInt(currentPage + '0') - 10, parseInt(currentPage + '0'));
     }
+
 } ]);
 
 app.controller('ModalController', function($scope, close) {
