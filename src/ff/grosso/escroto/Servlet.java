@@ -1,5 +1,6 @@
 package ff.grosso.escroto;
 
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -9,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.time.LocalDateTime;
@@ -37,17 +39,17 @@ public class Servlet extends HttpServlet {
 	public static final String USER_PATH = "c:/users/wendel.przygoda";
 	public static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd - HH:mm:ss");
 	private static int count = 0;
-	private static final List<String> filterAddress = new ArrayList<>();
+
+	private final static List<String> filterAddress = new ArrayList<>();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public Servlet() {
 		super();
-		setupFilter();
 	}
 
-	private void setupFilter() {
+	private static void loadFilter() {
 		File propFile = new File(Servlet.USER_PATH, "ffge.properties");
 		Properties prop = new Properties();
 		try {
@@ -58,6 +60,7 @@ public class Servlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
+		filterAddress.clear();
 		filterAddress.addAll(Arrays.asList(prop.getProperty("ignore").split(",")));
 	}
 
@@ -65,29 +68,32 @@ public class Servlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// if (!doFilter(request, response)) {
-		// return;
-		// }
 
-		// acessos
-		File propFile = new File(USER_PATH, "ffge.properties");
-		Properties prop = new Properties();
-		prop.load(new FileInputStream(propFile));
+		try {
 
-		if (count == 0) {
-			count = Integer.parseInt(prop.getProperty("acessos", "0"));
+			// acessos
+			File propFile = new File(USER_PATH, "ffge.properties");
+			Properties prop = new Properties();
+			prop.load(new FileInputStream(propFile));
+
+			if (count == 0) {
+				count = Integer.parseInt(prop.getProperty("acessos", "0"));
+			}
+
+			count++;
+			prop.put("acessos", String.valueOf(count));
+
+			prop.store(new FileOutputStream(propFile), "");
+
+			log("Acesso", request);
+
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("application/json");
+			response.getWriter().append(DataHandler.readData());
+
+		} catch (Exception e) {
+			logError(e, request);
 		}
-
-		count++;
-		prop.put("acessos", String.valueOf(count));
-
-		prop.store(new FileOutputStream(propFile), "");
-
-		log("Acesso", request);
-
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("application/json");
-		response.getWriter().append(DataHandler.readData());
 	}
 
 	@Override
@@ -114,6 +120,8 @@ public class Servlet extends HttpServlet {
 	}
 
 	public static boolean doFilter(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		loadFilter();
+
 		String ipAddress = request.getRemoteAddr();
 		InetAddress host = InetAddress.getByName(ipAddress);
 
@@ -134,7 +142,7 @@ public class Servlet extends HttpServlet {
 		return true;
 	}
 
-	private static final void log(String action, HttpServletRequest request) {
+	public static final void log(String action, HttpServletRequest request) {
 		try {
 			// log
 			String ipAddress = request.getRemoteAddr();
@@ -151,6 +159,35 @@ public class Servlet extends HttpServlet {
 			writer.newLine();
 			writer.flush();
 			writer.close();
+
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static final void logError(Exception exception, HttpServletRequest request) {
+		try {
+			// log
+			String ipAddress = request.getRemoteAddr();
+			InetAddress host = InetAddress.getByName(ipAddress);
+
+			String log = "[ERRO] : " + LocalDateTime.now().format(formatter) + " : " + host.getHostName() + '[' + host.getHostAddress() + "]\n";
+
+			System.out.println(log);
+
+			File logFile = new File(USER_PATH, "ffge.log");
+
+			BufferedWriter writer = new BufferedWriter(new FileWriter(logFile, true));
+			writer.write(log);
+			writer.newLine();
+			writer.flush();
+			writer.close();
+
+			exception.printStackTrace(new PrintStream(new BufferedOutputStream(new FileOutputStream(logFile))));
 
 		} catch (UnknownHostException e) {
 			e.printStackTrace();

@@ -8,14 +8,16 @@ public class Grosseria {
 	private String vitima;
 	private String descricao;
 	private String replica;
+	private boolean hide;
 
-	public Grosseria(LocalDateTime data, String acao, String vitima, String descricao, String replica) {
+	public Grosseria(LocalDateTime data, String acao, String vitima, String descricao, String replica, boolean hide) {
 		super();
 		this.data = data;
 		this.acao = acao;
 		this.vitima = vitima;
 		this.descricao = descricao;
 		this.replica = replica;
+		this.hide = hide;
 	}
 
 	public LocalDateTime getData() {
@@ -56,5 +58,13 @@ public class Grosseria {
 
 	public void setReplica(String replica) {
 		this.replica = replica;
+	}
+
+	public boolean isHide() {
+		return hide;
+	}
+
+	public void setHide(boolean hide) {
+		this.hide = hide;
 	}
 }

@@ -59,11 +59,11 @@ public class Subscribe extends HttpServlet {
 		}
 
 		if ("subscribe".equals(acao)) {
-			System.out.println("inscreve email: " + email);
 			EmailManager.addEmail(email);
+			Servlet.log("inscreve email: " + email, request);
 		} else if ("unsubscribe".equals(acao)) {
-			System.out.println("remove email: " + email);
 			EmailManager.removeEmail(email);
+			Servlet.log("remove email: " + email, request);
 		}
 
 	}
