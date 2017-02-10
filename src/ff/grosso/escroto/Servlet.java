@@ -40,13 +40,17 @@ public class Servlet extends HttpServlet {
 	public static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd - HH:mm:ss");
 	private static int count = 0;
 
-	private final static List<String> filterAddress = new ArrayList<>();
+	private static final List<String> filterAddress = new ArrayList<>();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public Servlet() {
 		super();
+	}
+
+	static {
+		loadFilter();
 	}
 
 	private static void loadFilter() {
@@ -98,7 +102,7 @@ public class Servlet extends HttpServlet {
 
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		if (!doFilter(req, resp)) {
+		if (!doFilter(req, resp, "Cadastro NEGADO")) {
 			return;
 		}
 
@@ -119,9 +123,7 @@ public class Servlet extends HttpServlet {
 		EmailNotification.sendMail(grosseria);
 	}
 
-	public static boolean doFilter(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		loadFilter();
-
+	public static boolean doFilter(HttpServletRequest request, HttpServletResponse response, String messageLog) throws IOException, ServletException {
 		String ipAddress = request.getRemoteAddr();
 		InetAddress host = InetAddress.getByName(ipAddress);
 
@@ -134,7 +136,7 @@ public class Servlet extends HttpServlet {
 				response.setContentType("application/json");
 				response.sendError(HttpServletResponse.SC_FORBIDDEN, "ffdenied");
 
-				log("Cadastro NEGADO", request);
+				log(messageLog, request);
 
 				return false;
 			}

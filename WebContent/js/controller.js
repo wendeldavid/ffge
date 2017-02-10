@@ -26,6 +26,14 @@ app.controller('FFCtrl', [ '$scope', '$http', 'ModalService', function($scope, $
         });
     }
 
+    $scope.like = function(grosseriaId) {
+        $http.post(window.location.href + 'Like', grosseriaId).then(function(success) {
+            $scope.load();
+        }, function(error) {
+            console.log(error);
+        });
+    }
+
     $scope.openModal = function() {
         ModalService.showModal({
             templateUrl : 'modal.html',

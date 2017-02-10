@@ -93,7 +93,7 @@
 			<h2>
 				<label>Nosso recorde é de </label>
 				<label style="color: red">{{ff.recorde}}</label>
-				<label>dias.</label>
+				<label>dias. Colabore para melhorar este índice.</label>
 			</h2>
 		</div>
 
@@ -157,6 +157,18 @@
 							ng-class="grosseriaActiveClass"
 							ng-show="!grosseria.hide"
 							ng-click="grosseria.open = !grosseria.open; grosseriaIconClass = grosseria.open ? 'fa-minus' : 'fa-plus'">
+							<span>
+								<i
+									class="fa fa-thumbs-o-up"
+									uib-tooltip="Curtir a grosseria"
+									popover-trigger="'mouseenter'"
+									tooltip-placement="right-top"
+									tooltip-popup-delay="500"
+									ng-click="like(grosseria.id)"></i>
+								<span
+									class="badge"
+									style="margin-right: 20px">{{grosseria.likes.length}}</span>
+							</span>
 							<span>{{grosseria.data.date.day}}/{{grosseria.data.date.month}}/{{grosseria.data.date.year}}</span>
 							<span>- {{grosseria.data.time.hour}}:{{grosseria.data.time.minute}}</span>
 							<span>- foi {{grosseria.acao | lowercase}}</span>

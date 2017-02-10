@@ -8,7 +8,10 @@ import java.io.IOException;
 import java.io.Reader;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -35,12 +38,18 @@ public class DataHandler {
 		return result.append("}").toString();
 	}
 
+	public static FF getData() {
+		Gson data = builder.create();
+		return data.fromJson(innerRead(), FF.class);
+	}
+
 	public static Grosseria writeData(String json) {
 		Gson data = builder.create();
 
-		FF ff = data.fromJson(innerRead(), FF.class);
+		FF ff = getData();
 
 		Grosseria grosseria = data.fromJson(json, Grosseria.class);
+		grosseria.setId(ff.getGrosserias().size() + 1);
 		grosseria.setData(LocalDateTime.now());
 
 		try (FileWriter writer = new FileWriter(FILE)) {
@@ -62,6 +71,31 @@ public class DataHandler {
 		}
 
 		return grosseria;
+	}
+
+	public static void grosseriaLiked(long id, String address) {
+		boolean liked = false;
+
+		FF ff = DataHandler.getData();
+		for (Grosseria grosseria : ff.getGrosserias()) {
+			if (grosseria.getId() == id) {
+				List<String> likes = new ArrayList<String>(Arrays.asList(grosseria.getLikes()));
+				if (!likes.contains(address)) {
+					likes.add(address);
+					grosseria.setLikes(likes.toArray(new String[likes.size()]));
+					liked = true;
+				}
+				break;
+			}
+		}
+		if (liked) {
+			try (FileWriter writer = new FileWriter(FILE)) {
+				Gson data = builder.create();
+				writer.write(data.toJson(ff));
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+		}
 	}
 
 	private static String innerRead() {

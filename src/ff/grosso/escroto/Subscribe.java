@@ -38,7 +38,7 @@ public class Subscribe extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (!Servlet.doFilter(request, response)) {
+		if (!Servlet.doFilter(request, response, "Cadastro de email NEGADO")) {
 			return;
 		}
 
