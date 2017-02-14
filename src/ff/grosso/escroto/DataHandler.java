@@ -23,7 +23,7 @@ import ff.grosso.escroto.data.Grosseria;
 
 public class DataHandler {
 
-	private static final File FILE = new File("c:/users/wendel.przygoda", "ffge.json"); // FIXME alterar para produção
+	private static final File FILE = new File("c:/users/wendel.przygoda", "ffge1.json"); // FIXME alterar para produção
 	private static final GsonBuilder builder = new GsonBuilder();
 
 	static {
@@ -51,6 +51,7 @@ public class DataHandler {
 		Grosseria grosseria = data.fromJson(json, Grosseria.class);
 		grosseria.setId(ff.getGrosserias().size() + 1);
 		grosseria.setData(LocalDateTime.now());
+		grosseria.setLikes(new String[0]);
 
 		try (FileWriter writer = new FileWriter(FILE)) {
 			Collection<Grosseria> grosserias = ff.getGrosserias();
