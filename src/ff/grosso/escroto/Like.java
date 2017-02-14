@@ -48,7 +48,6 @@ public class Like extends HttpServlet {
 		Servlet.log("Like", request);
 
 		DataHandler.grosseriaLiked(id, ipAddress);
-
 	}
 
 }
