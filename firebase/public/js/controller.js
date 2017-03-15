@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('ffge', [ 'ui.bootstrap', 'ui.bootstrap.tpls' ]);
+var app = angular.module('ffge', [ 'ui.bootstrap', 'ui.bootstrap.tpls', 'ngRoute' ]);
 
 app.controller('FFCtrl', [
 		'$rootScope',
