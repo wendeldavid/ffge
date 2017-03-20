@@ -27,6 +27,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ff.grosso.escroto.data.Grosseria;
+import ff.grosso.escroto.email.EmailNotification;
 
 /**
  * Servlet implementation class Servlet
@@ -119,7 +120,7 @@ public class Servlet extends HttpServlet {
 
 		Grosseria grosseria = DataHandler.writeData(sb.toString());
 
-		// EmailNotification.sendMail(grosseria);
+		EmailNotification.sendMail(grosseria);
 	}
 
 	public static boolean doFilter(HttpServletRequest request, HttpServletResponse response, String messageLog) throws IOException, ServletException {

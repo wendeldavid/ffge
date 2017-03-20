@@ -10,7 +10,8 @@ var ffimages = [
 		'https://firebasestorage.googleapis.com/v0/b/ffge-9a4e7.appspot.com/o/img%2Fff4.jpg?alt=media&token=43340a46-7afd-47d2-adf3-bbb464a238d1',
 		'https://firebasestorage.googleapis.com/v0/b/ffge-9a4e7.appspot.com/o/img%2Fff5.jpg?alt=media&token=21ddcc46-a732-4d15-b203-70df510c6f4b',
 		'https://firebasestorage.googleapis.com/v0/b/ffge-9a4e7.appspot.com/o/img%2Fff6.jpg?alt=media&token=1cc98a67-ca7d-431c-9b63-9a37d0963e27',
-		'https://firebasestorage.googleapis.com/v0/b/ffge-9a4e7.appspot.com/o/img%2Fff7.jpg?alt=media&token=67a1189a-28b7-4eed-9ef4-f9b089574415' ];
+		'https://firebasestorage.googleapis.com/v0/b/ffge-9a4e7.appspot.com/o/img%2Fff7.jpg?alt=media&token=67a1189a-28b7-4eed-9ef4-f9b089574415',
+		'https://firebasestorage.googleapis.com/v0/b/ffge-9a4e7.appspot.com/o/img%2Ffalafinagangstyle.gif?alt=media&token=fddc4781-dec9-4917-838e-8a62aad46895'];
 
 function ffQueueKey(e) {
 	var event = window.event ? window.event : e;
@@ -31,7 +32,7 @@ function ffQueueKey(e) {
 		if (ffOK) {
 			ffQueue = []
 
-			var imgIndex = Math.floor((Math.random() * 7) + 1);
+			var imgIndex = Math.floor((Math.random() * ffimages.length) + 1);
 
 			var image = document.getElementById('ffgeImage');
 			image.src = ffimages[imgIndex];

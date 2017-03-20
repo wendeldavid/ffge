@@ -21,7 +21,7 @@ function ffQueueKey(e) {
         if (ffOK) {
             ffQueue = []
 
-            var imgIndex = Math.floor((Math.random() * 7) + 1);
+            var imgIndex = Math.floor((Math.random() * 8) + 1);
 
             var image = document.getElementById('ffgeImage');
             image.src = 'img/ff' + imgIndex + '.jpg';
