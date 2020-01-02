@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import SignUp from '../views/SignUp.vue'
+import Portal from '../views/Portal.vue'
 import firebase from 'firebase'
 
 Vue.use(VueRouter)
@@ -23,6 +24,11 @@ const routes = [
     meta: {
       requiresAuth: true
     }
+  },
+  {
+    path: '/portal',
+    name: 'portal',
+    component: Portal
   },
   {
     path: '/about',

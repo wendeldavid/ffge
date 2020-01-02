@@ -2,13 +2,18 @@ import Vue from 'vue';
 import firebase from 'firebase';
 import App from './App.vue';
 import router from './router';
+import BootstrapVue from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+Vue.use(BootstrapVue)
 
 Vue.config.productionTip = false;
 
 let app = '';
 
 const config = {
-  apiKey: 'AIzaSyBofpG_MS_xyQxC4aem8u0Bi8UPCkZdYoA',
+  apiKey: '',
   authDomain: 'ffge-portal.firebaseapp.com',
   databaseURL: 'https://ffge-portal.firebaseio.com',
   projectId: 'ffge-portal',
