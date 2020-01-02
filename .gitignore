@@ -1,4 +1,5 @@
 /build/
 /target/
 /firebase/functions/node_modules/
+/dist/
 node_modules

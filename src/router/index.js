@@ -11,11 +11,11 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '*',
-    redirect: '/home'
+    redirect: '/portal'
   },
   {
     path: '/',
-    redirect: '/home'
+    redirect: '/portal'
   },
   {
     path: '/home',
