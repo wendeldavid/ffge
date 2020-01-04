@@ -1,25 +1,45 @@
 <template>
-    <div>
-        <b-list-group>
-          <b-list-group-item href="#" class="flex-column align-items-start" v-for="grosseria in grosserias" v-bind:key="grosseria.id">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">Foi {{grosseria.acao}} com <b>{{grosseria.vitima}}</b></h5>
-              <small>{{grosseria.data.date.day}}/{{grosseria.data.date.month}}/{{grosseria.data.date.year}} - {{grosseria.data.time.hour}}:{{grosseria.data.time.minute}}</small>
-            </div>
+<div class="status">
+      <p>
+        <label>Estamos trabalhando </label>
+        <label class="number">{{portal.days}}</label>
+        <label> sem ser grosso e escroto.</label>
+      </p>
+      <p>
+        <label>Nosso recorde é de</label>
+        <label class="number">{{portal.record}}</label>
+        <label>dias. Colabore para melhorar este índice.</label>
+      </p>
 
-            <blockquote class="quote">
-              {{grosseria.descricao}}
-            </blockquote>
+      <b-list-group>
+        <b-list-group-item href="#" class="flex-column align-items-start" v-for="grosseria in grosserias" v-bind:key="grosseria.id">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Foi {{grosseria.acao}} com <b>{{grosseria.vitima}}</b></h5>
+            <small>{{grosseria.data.date.day}}/{{grosseria.data.date.month}}/{{grosseria.data.date.year}} - {{grosseria.data.time.hour}}:{{grosseria.data.time.minute}}</small>
+          </div>
 
-            <small v-bind:class="{ 'd-none': !grosseria.replica }"><b>Réplica:</b> {{grosseria.replica}}</small>
-          </b-list-group-item>
-        </b-list-group>
-    </div>
+          <blockquote class="quote">
+            {{grosseria.descricao}}
+          </blockquote>
+
+          <small v-bind:class="{ 'd-none': !grosseria.replica }"><b>Réplica:</b> {{grosseria.replica}}</small>
+        </b-list-group-item>
+      </b-list-group>
+  </div>
 </template>
 
 <script>
 
+import Vue from 'vue';
 import firebase from 'firebase';
+import VueMoment from 'vue-moment';
+import moment from 'moment-timezone';
+ 
+Vue.use(VueMoment, {
+    moment
+});
+
+moment.locale('pt-BR');
 
 export default {
     name: 'portal',
@@ -1749,10 +1769,43 @@ export default {
     "id" : 86,
     "likes" : [ "10.1.27.174", "10.1.27.126", "10.1.26.56" ],
     "vitima" : "Todo mundo no slack da Senior"
-  } ]
+  } ];
+
+        grosserias = grosserias.reverse();
+
+        let last = grosserias[0];
+
+        let countLast = moment([last.data.date.year, last.data.date.month, last.data.date.day]).fromNow();
+
+
+        var record = 0;
+
+        for (var i = 0; i < grosserias.length; i++) {
+          if (i === grosserias.length - 1 || 
+            !grosserias[0].data || !grosserias[0].data.date ||
+            !grosserias[0 + 1].data || !grosserias[0 + 1].data.date) {
+            break;
+          }
+
+          let grosseria = grosserias[i];
+          let a = moment([grosseria.data.date.year, grosseria.data.date.month, grosseria.data.date.day]);
+
+          let proximaProsseria = grosserias[i + 1];
+          let b = moment([proximaProsseria.data.date.year, proximaProsseria.data.date.month, proximaProsseria.data.date.day]);
+
+          let currentDiff = a.diff(b, 'days');
+
+          if (currentDiff > record) { 
+            record = currentDiff;
+          }
+        }
 
         return {
-          grosserias : grosserias.reverse()
+          portal: {
+            days: countLast,
+            record: record
+          },
+          grosserias : grosserias
         }
     }
 }
@@ -1784,20 +1837,42 @@ tr:nth-child(even) {
   margin: 0 10 0 10;
 }
 .quote:before {
-      content: '\201C';
-      position: absolute;
-      top: 0.25em;
-      left: 0em;
-      font-size: 3em;
-      z-index: -1;
-   }
+    content: '\201C';
+    position: absolute;
+    top: 0.25em;
+    left: 0em;
+    font-size: 3em;
+    z-index: -1;
+  }
 .quote:after {
-      content: '\201D';
-      position: absolute;
-      bottom: 0em;
-      right: 0;
-      font-size: 3em;
-      font-style: italic;
-      z-index: -1;
-   }
+    content: '\201D';
+    position: absolute;
+    bottom: 0em;
+    right: 0;
+    font-size: 3em;
+    font-style: italic;
+    z-index: -1;
+  }
+
+.portal.logo {
+  padding: 50px;
+}
+
+.portal .status p {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.portal .number {
+  color: red;
+}
+
+.portal .number:before {
+  content: "\00a0";
+}
+
+.portal .number:after {
+  content: "\00a0";
+}
+
 </style>
