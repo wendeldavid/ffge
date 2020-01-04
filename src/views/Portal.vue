@@ -130,7 +130,7 @@ tr:nth-child(even) {
     content: '\201C';
     position: absolute;
     top: 0.25em;
-    left: 0em;
+    left: -0.10em;
     font-size: 3em;
     z-index: -1;
   }
@@ -138,7 +138,7 @@ tr:nth-child(even) {
     content: '\201D';
     position: absolute;
     bottom: 0em;
-    right: 0;
+    right: -0.10em;
     font-size: 3em;
     font-style: italic;
     z-index: -1;

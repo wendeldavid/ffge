@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
+import Logout from '../views/Logout.vue'
 import SignUp from '../views/SignUp.vue'
 import Portal from '../views/Portal.vue'
+import Register from '../views/Register.vue'
 import firebase from 'firebase'
 
 Vue.use(VueRouter)
@@ -16,14 +17,6 @@ const routes = [
   {
     path: '/',
     redirect: '/portal'
-  },
-  {
-    path: '/home',
-    name: 'home',
-    component: Home,
-    meta: {
-      requiresAuth: true
-    }
   },
   {
     path: '/portal',
@@ -44,9 +37,22 @@ const routes = [
     component: Login
   },
   {
+    path: '/logout',
+    name: 'Logout',
+    component: Logout
+  },
+  {
     path: '/sign-up',
     name: 'SignUp',
     component: SignUp
+  }, 
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register,
+    meta: {
+      requiresAuth: true
+    }
   }
 ]
 
@@ -62,8 +68,8 @@ router.beforeEach((to, from, next) => {
 
   if (requiresAuth && !currentUser) {
     next('login');
-  } else if (!requiresAuth && currentUser) {
-    next('home');
+  // } else if (!requiresAuth && currentUser) {
+  //   next();
   } else {
     next();
   }
