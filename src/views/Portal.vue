@@ -1,9 +1,9 @@
 <template>
 <div class="status">
       <p>
-        <label>Estamos trabalhando </label>
+        <label>Estamos trabalhando há</label>
         <label class="number">{{portal.days}}</label>
-        <label> sem ser grosso e escroto.</label>
+        <label> dias(s) sem ser grosso e escroto.</label>
       </p>
       <p>
         <label>Nosso recorde é de</label>
@@ -12,10 +12,10 @@
       </p>
 
       <b-list-group>
-        <b-list-group-item href="#" class="flex-column align-items-start" v-for="grosseria in portal.grosserias" v-bind:key="grosseria.id">
+        <b-list-group-item href="#" class="flex-column align-items-start" v-bind:class="{ 'd-none': grosseria.hide }" v-for="grosseria in portal.grosserias" v-bind:key="grosseria.id">
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">Foi {{grosseria.acao}} com <b>{{grosseria.vitima}}</b></h5>
-            <small>{{grosseria.data.date.day}}/{{grosseria.data.date.month}}/{{grosseria.data.date.year}} - {{grosseria.data.time.hour}}:{{grosseria.data.time.minute}}</small>
+            <small>{{grosseria.data.date.day}}/{{grosseria.data.date.month + 1}}/{{grosseria.data.date.year}} - {{grosseria.data.time.hour}}:{{grosseria.data.time.minute}}</small>
           </div>
 
           <blockquote class="quote">
@@ -60,14 +60,16 @@ export default {
         let data = database.ref().child('/grosserias/');
         
         data.once('value').then(function(snapshot) {
-            var grosserias = snapshot.val().reverse();
+            var grosserias = snapshot.val();
+            grosserias = Object.values(grosserias).reverse();
             
             portal.grosserias = grosserias;
 
+            let now = moment(moment.now());
             let last = grosserias[0];
 
-            let countLast = moment([last.data.date.year, last.data.date.month, last.data.date.day]).fromNow();
-            portal.days = countLast;
+            let lastGrosseria = moment([last.data.date.year, last.data.date.month, last.data.date.day]);
+            portal.days = now.diff(lastGrosseria, 'days');
 
             for (var i = 0; i < grosserias.length; i++) {
               if (i === grosserias.length - 1 || 
@@ -88,7 +90,10 @@ export default {
 
               if (currentDiff > portal.record) { 
                 portal.record = currentDiff;
+              }
 
+              if (portal.record < portal.days) {
+                portal.record = portal.days;
               }
             }
 

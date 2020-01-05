@@ -21,6 +21,16 @@
 </template>
 
 <script>
+
+import Vue from 'vue';
+import firebase from 'firebase';
+import VueMoment from 'vue-moment';
+import moment from 'moment-timezone';
+
+Vue.use(VueMoment, {
+    moment
+});
+
 export default {
     name: 'register',
     data() {
@@ -32,6 +42,59 @@ export default {
     },
     methods: {
         login: function() {
+            let database = firebase.database();
+
+            let data = database.ref().child('/grosserias/');
+
+            let newOrderKey = data.push();
+
+            //montar acao
+            let acao = '';
+            if (this.selectionGrosso && this.selectionEscroto) {
+                acao = acao + 'Grosseiro e Escroto';
+            } else if (this.selectionGrosso) {
+                acao = 'Grosseriro';
+            } else if (this.selectionEscroto) {
+                acao = 'Escroto';
+            } else {
+                alert('Selecionar ao menos um tipo de ofensa');
+                return;
+            }
+
+            //descrição da ofensa
+            if (!this.description) {
+                alert('Descrever qual a ofensa você foi vítima');
+                return;
+            }
+
+            //vitima
+            let currentUser = firebase.auth().currentUser;
+
+            //data e hora
+            let now = moment();
+
+            let newEntry = {
+                id: newOrderKey.key,
+                acao: acao,
+                descricao: this.description,
+                data: {
+                    date: {
+                        day: now.dayOfYear(),
+                        month: now.month(),
+                        year: now.year()
+                    },
+                    time: {
+                        hour: now.hour(),
+                        minute: now.minute(),
+                        second: now.second()
+                    }
+                },
+                hide: false,
+                vitima: currentUser.displayName
+            }
+
+            newOrderKey.set(newEntry);
+
             this.$router.replace('portal');
         }
     }
