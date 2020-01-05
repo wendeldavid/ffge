@@ -71,12 +71,14 @@ input {
     margin: 10px 0;
     width: 20%;
     padding: 15px;
+    min-width: 300px;
 }
 
 button {
     margin-top: 10px;
     width: 10%;
     cursor: pointer;
+    min-width: 150px;
 }
 
 span {

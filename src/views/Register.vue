@@ -108,6 +108,8 @@ textarea {
     height: 8em;
     margin: 10px 0;
     padding: 15px;
+    min-width: 300px;
+    max-width: 90%;
 }
 
 button {
