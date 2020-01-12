@@ -17,7 +17,7 @@ const config = {
   authDomain: 'ffge-portal.firebaseapp.com',
   databaseURL: 'https://ffge-portal.firebaseio.com',
   projectId: 'ffge-portal',
-  storageBucket: 'ffge-portal.appstpo.com',
+  storageBucket: 'ffge-portal.appspot.com',
   messagingSenderId: '895779158267'
 }
 
