@@ -25,6 +25,9 @@
           <small v-bind:class="{ 'd-none': !grosseria.replica }"><b>Réplica:</b> {{grosseria.replica}}</small>
         </b-list-group-item>
       </b-list-group>
+
+      <button @click="gotoTop()" id="btTop" class="top-button" title="Go to top">&#8743;</button>
+
   </div>
 </template>
 
@@ -53,6 +56,12 @@ export default {
       return {
         portal: portal
       };
+    },
+    methods: {
+      gotoTop: function() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      }
     },
     mounted() {
        let database = firebase.database();
@@ -98,11 +107,18 @@ export default {
             }
 
         });
-
-        
-
-        
     }
+}
+
+document.onscroll = scrollFunction;
+function scrollFunction() {
+  let btTop = document.getElementById('btTop');
+
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    btTop.style.display = "block";
+  } else {
+    btTop.style.display = "none";
+  }
 }
 </script>
 
@@ -168,6 +184,27 @@ tr:nth-child(even) {
 
 .portal .number:after {
   content: "\00a0";
+}
+
+.top-button {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: rgb(0, 167, 84); /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  border-radius: 100%; /* Rounded corners */
+  width: 50px;
+  height: 50px;
+  font-size: x-large;
+}
+
+.top-button:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
 }
 
 </style>

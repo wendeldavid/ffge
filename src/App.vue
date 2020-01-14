@@ -32,6 +32,9 @@
 
 
     <router-view/>
+
+    
+
   </div>
 </template>
 
@@ -95,11 +98,10 @@ export default {
       return {
         portal: portal
       };
-    },
-    methods: {
-
     }
 }
+
+
 </script>
 
 <style>
@@ -123,5 +125,7 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+
 
 </style>
