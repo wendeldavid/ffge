@@ -9,6 +9,8 @@
       | <router-link to="/logout">Logout</router-link>
       | <router-link to="/about">About</router-link>
     </div>
+
+    <!-- <button @click="testMail()" id="btTestMail">test mail</button> -->
     
     <img class="logo" alt="FFGE" src="./assets/cipa.png">
     
@@ -98,6 +100,13 @@ export default {
       return {
         portal: portal
       };
+    },
+    methods: {
+      testMail: function() {
+        alert('email sent');
+
+        
+      }
     }
 }
 

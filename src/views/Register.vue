@@ -79,7 +79,7 @@ export default {
                 descricao: this.description,
                 data: {
                     date: {
-                        day: now.dayOfYear(),
+                        day: now.date(),
                         month: now.month(),
                         year: now.year()
                     },

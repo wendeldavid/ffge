@@ -1,6 +1,6 @@
 {
   "name": "ffge-portal",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -15,6 +15,7 @@
     "firebase": "^7.6.1",
     "moment-timezone": "^0.5.27",
     "vue": "^2.6.10",
+    "vue-analytics": "^5.20.2",
     "vue-moment": "^4.1.0",
     "vue-router": "^3.1.3"
   },

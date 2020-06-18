@@ -5,6 +5,8 @@ const admin = require('firebase-admin');
 const nodemailer = require('nodemailer');
 const cors = require('cors')({origin : true});
 
+const nodeoutlook = require('nodejs-nodemailer-outlook');
+
 admin.initializeApp();
 /**
 * Here we're using Gmail to send 
@@ -16,6 +18,24 @@ let transporter = nodemailer.createTransport({
         pass: 'Leviathan1!666'
     }
 });
+
+exports.sendOutlook = functions.https.onRequest((req, res) => {
+    nodeoutlook.sendEmail({
+        auth: {
+            user: "wendel.hades@hotmail.com",
+            pass: "Przygoda1!"
+        },
+        from: 'sender@outlook.com',
+        to: 'wendel.hades@gmail.com',
+        subject: 'Hey you, awesome!',
+        html: '<b>This is bold text</b>',
+        text: 'This is text version!',
+        replyTo: 'wendel.przygoda@gmail.com',
+        secure: true,
+        onError: (e) => console.log(e),
+        onSuccess: (i) => console.log(i)
+    });
+})
 
 exports.sendMail = functions.https.onRequest((req, res) => {
     cors(req, res, () => {
