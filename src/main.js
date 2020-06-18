@@ -13,7 +13,7 @@ Vue.config.productionTip = false;
 let app = '';
 
 const config = {
-  apiKey: 'AIzaSyBofpG_MS_xyQxC4aem8u0Bi8UPCkZdYoA',
+  apiKey: '',
   authDomain: 'ffge-portal.firebaseapp.com',
   databaseURL: 'https://ffge-portal.firebaseio.com',
   projectId: 'ffge-portal',
