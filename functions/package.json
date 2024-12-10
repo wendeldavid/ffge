@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "firebase": "^10.9.0",
+    "firebase": "^10.14.1",
     "firebase-admin": "^11.4.1",
     "firebase-functions": "^3.11.0",
     "nodejs-nodemailer-outlook": "^1.2.3",
