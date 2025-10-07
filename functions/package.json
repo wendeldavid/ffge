@@ -18,7 +18,7 @@
     "firebase-admin": "^11.4.1",
     "firebase-functions": "^3.11.0",
     "nodejs-nodemailer-outlook": "^1.2.3",
-    "nodemailer": "^6.9.9"
+    "nodemailer": "^7.0.7"
   },
   "devDependencies": {
     "eslint": "^5.12.0",
